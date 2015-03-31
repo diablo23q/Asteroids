@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "test.zeptoteam.mk.asteroids"
+        minSdkVersion 9
+        targetSdkVersion 21
+
+        ndk {
+            moduleName "Asteroids"
+            cFlags "-DANDROID_NDK"
+            cFlags "-std=c++11"
+            ldLibs "log", "GLESv2"
+            stl "gnustl_static"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:appcompat-v7:21.0.3'
+}
